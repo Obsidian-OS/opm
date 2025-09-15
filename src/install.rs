@@ -54,6 +54,13 @@ pub fn install_packages(packages: &[&str], reinstall: bool, download_only: bool)
         extract_package(&pkg_file, &extract_dir);
     }
 
+    Command::new("sh")
+        .arg("-c")
+        .arg(format!("chmod +x {}/usr/share/applications/* || true", extract_dir.to_str().unwrap()))
+        .status()
+        .map_err(|e| eprintln!("Failed to execute chmod command: {}", e))
+        .ok();
+
     for package in packages {
         let squashfs_path = create_squashfs(package, &extract_dir);
         install_extension(package, &squashfs_path);
