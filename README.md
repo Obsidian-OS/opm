@@ -34,7 +34,7 @@ A powerful, lightweight package manager for **ObsidianOS**, built with Rust. `op
 ### From the AUR
 
 ```bash
-yay -S obsidianospm # or paru. yay comes built into ObsidianOS.
+yay -S obsidianospm-git # or paru. yay comes built into ObsidianOS.
 ```
 
 ### From Source
